@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1788183269801,
+    "type": "webhook_retry",
+    "url": "https://your-app.com/webhook",
+    "payload": {
+      "type": "payment.success",
+      "amount": 5000,
+      "shouldFail": true
+    },
+    "originalEventId": "fail_test_1",
+    "status": "done",
+    "attempts": 1
+  }
+]
