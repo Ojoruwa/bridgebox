@@ -10,11 +10,11 @@ app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.json({ 
-    name: 'BridgeBox Global', 
+  res.json({
+    name: 'BridgeBox Global',
     status: 'live',
     location: 'Ibadan -> Global',
-    endpoints: ['/api/bridge/call', '/api/bridge/webhook', '/api/bridge/queue', '/api/bridge/logs'] 
+    endpoints: ['/api/bridge/call', '/api/bridge/webhook', '/api/bridge/queue', '/api/bridge/logs']
   });
 });
 

@@ -1,18 +1,13 @@
-// Simple API Key auth - like FastAPI's APIKeyHeader
-function apiKeyAuth(req, res, next) {
+function authMiddleware(req, res, next) {
   const apiKey = req.headers['x-api-key'];
-  const validKey = process.env.API_KEY || 'my_secret_key_123';
+  const expectedKey = process.env.API_KEY;
 
-  if (!apiKey) {
-    return res.status(401).json({ error: 'Missing x-api-key header' });
+  if (!apiKey || apiKey!== expectedKey) {
+    return res.status(401).json({ error: 'Unauthorized: Invalid API Key' });
   }
 
-  if (apiKey !== validKey) {
-    return res.status(403).json({ error: 'Invalid API key' });
-  }
-
-  console.log(`[Auth] Authenticated request`);
+  console.log('[Auth] Authenticated request');
   next();
 }
 
-module.exports = { apiKeyAuth };
+module.exports = authMiddleware;
